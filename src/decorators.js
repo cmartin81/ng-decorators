@@ -23,21 +23,20 @@ function createDecorator(modules, makeFunction) {
   return function (target) {
     class tempClass extends target {
       constructor(...injectedValues) {
-      super(...injectedValues);
-      for (var i = 0; i < modules.length; i++) {
-        this[modules[i]] = injectedValues[i];
+        super(...injectedValues);
+        for (var i = 0; i < modules.length; i++) {
+          this[modules[i]] = injectedValues[i];
+        }
+      }
     }
+    tempClass.$inject = modules;
+
+    return makeFunction(tempClass);
   }
 }
-tempClass.$inject = modules;
-
-return makeFunction(tempClass);
-}
-}
 
 
-function makeDirective(constructorFn)
-{
+function makeDirective(constructorFn) {
 
   constructorFn = _normalizeConstructor(constructorFn);
 
@@ -67,23 +66,19 @@ function makeDirective(constructorFn)
   return factoryArray
 }
 
-function makeController(contructorFn)
-{
+function makeController(contructorFn) {
   return contructorFn;
 }
 
-function makeService(contructorFn)
-{
+function makeService(contructorFn) {
   return contructorFn;
 }
 
-function makeProvider(constructorFn)
-{
+function makeProvider(constructorFn) {
   return contructorFn;
 }
 
-function makeFactory(constructorFn)
-{
+function makeFactory(constructorFn) {
   constructorFn = _normalizeConstructor(constructorFn);
   return _createFactoryArray(constructorFn);
 }
@@ -96,8 +91,7 @@ function makeFactory(constructorFn)
  * @returns {*}
  * @private
  */
-function _normalizeConstructor(input)
-{
+function _normalizeConstructor(input) {
   var constructorFn;
 
   if (input.constructor === Array) {
@@ -123,21 +117,20 @@ function _normalizeConstructor(input)
  * @returns {Array.<T>}
  * @private
  */
-function _createFactoryArray(constructorFn)
-{
+function _createFactoryArray(constructorFn) {
   // get the array of dependencies that are needed by this component (as contained in the `$inject` array)
   var args = constructorFn.$inject || [];
   var factoryArray = args.slice(); // create a copy of the array
   // The factoryArray uses Angular's array notation whereby each element of the array is the name of a
   // dependency, and the final item is the factory function itself.
   factoryArray.push((...args) => {
-  //return new constructorFn(...args);
-  var instance = new constructorFn(...args);
-  for (var key in instance) {
-    instance[key] = instance[key];
-  }
-  return instance;
-});
+    //return new constructorFn(...args);
+    var instance = new constructorFn(...args);
+    for (var key in instance) {
+      instance[key] = instance[key];
+    }
+    return instance;
+  });
 
   return factoryArray;
 }
@@ -147,8 +140,7 @@ function _createFactoryArray(constructorFn)
  * @param original
  * @returns {Function}
  */
-function _cloneFunction(original)
-{
+function _cloneFunction(original) {
   return function () {
     return original.apply(this, arguments);
   };
@@ -160,7 +152,6 @@ function _cloneFunction(original)
  * @param methodName
  * @param callback
  */
-function _override(object, methodName, callback)
-{
+function _override(object, methodName, callback) {
   object[methodName] = callback(object[methodName])
 }
