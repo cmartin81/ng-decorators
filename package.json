@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cmartin81/ngDecorators.git"
+    "url": "https://github.com/cmartin81/ng-decorators.git"
   },
   "keywords": [
     "Angular",
@@ -22,9 +22,9 @@
   "author": "Christian Martin",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cmartin81/ngDecorators/issues"
+    "url": "https://github.com/cmartin81/ng-decorators/issues"
   },
-  "homepage": "https://github.com/cmartin81/ngDecorators",
+  "homepage": "https://github.com/cmartin81/ng-decorators",
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-babel": "^5.1.0",
