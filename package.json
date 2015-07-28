@@ -2,7 +2,7 @@
   "name": "ng-decorators",
   "version": "0.0.1",
   "description": "ES6 decorators for easy creating services, providers, controllers and directives",
-  "main": "dist/index.js",
+  "main": "dist/index.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
