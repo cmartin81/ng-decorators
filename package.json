@@ -1,6 +1,6 @@
 {
   "name": "ng-decorators",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "ES6 decorators for easy creating services, providers, controllers and directives",
   "main": "dist/index.min.js",
   "scripts": {
