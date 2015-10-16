@@ -10,7 +10,7 @@ var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_ag
 exports.Factory = Factory;
 exports.Directive = Directive;
 exports.Provider = Provider;
-exports.Dervice = Dervice;
+exports.Service = Service;
 exports.Controller = Controller;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
@@ -29,7 +29,7 @@ function Provider(modules) {
   return createDecorator(modules, makeProvider);
 }
 
-function Dervice(modules) {
+function Service(modules) {
   return createDecorator(modules, makeService);
 }
 
