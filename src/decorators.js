@@ -10,7 +10,7 @@ export function Provider(modules) {
   return createDecorator(modules, makeProvider);
 }
 
-export function Dervice(modules) {
+export function Service(modules) {
   return createDecorator(modules, makeService);
 }
 
