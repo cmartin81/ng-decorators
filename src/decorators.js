@@ -20,13 +20,13 @@ export function Controller(modules = []) {
 
 
 function createDecorator(modules, makeFunction) {
-  return function (target) {
+  return (target) => {
     class Clazz extends target {
       constructor(...injectedValues) {
         super(...injectedValues);
-        for (var i = 0; i < modules.length; i++) {
-          this[modules[i]] = injectedValues[i];
-        }
+        modules.forEach((module, i) => {
+          this[module] = injectedValues[i];
+        });
         if (typeof this.init === 'function') {
           this.init();
         }

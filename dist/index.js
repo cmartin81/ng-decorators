@@ -53,16 +53,18 @@ function createDecorator(modules, makeFunction) {
       _inherits(Clazz, _target);
 
       function Clazz() {
-        _classCallCheck(this, Clazz);
+        var _this = this;
 
         for (var _len = arguments.length, injectedValues = Array(_len), _key = 0; _key < _len; _key++) {
           injectedValues[_key] = arguments[_key];
         }
 
+        _classCallCheck(this, Clazz);
+
         _get(Object.getPrototypeOf(Clazz.prototype), 'constructor', this).apply(this, injectedValues);
-        for (var i = 0; i < modules.length; i++) {
-          this[modules[i]] = injectedValues[i];
-        }
+        modules.forEach(function (module, i) {
+          _this[module] = injectedValues[i];
+        });
         if (typeof this.init === 'function') {
           this.init();
         }
