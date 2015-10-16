@@ -21,17 +21,20 @@ export function Controller(modules) {
 
 function createDecorator(modules, makeFunction) {
   return function (target) {
-    class tempClass extends target {
+    class Clazz extends target {
       constructor(...injectedValues) {
         super(...injectedValues);
         for (var i = 0; i < modules.length; i++) {
           this[modules[i]] = injectedValues[i];
         }
+        if (typeof this.init === 'function') {
+          this.init();
+        }
       }
     }
-    tempClass.$inject = modules;
+    Clazz.$inject = modules;
 
-    return makeFunction(tempClass);
+    return makeFunction(Clazz);
   }
 }
 

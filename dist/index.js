@@ -39,28 +39,31 @@ function Controller(modules) {
 
 function createDecorator(modules, makeFunction) {
   return function (target) {
-    var tempClass = (function (_target) {
-      _inherits(tempClass, _target);
+    var Clazz = (function (_target) {
+      _inherits(Clazz, _target);
 
-      function tempClass() {
-        _classCallCheck(this, tempClass);
+      function Clazz() {
+        _classCallCheck(this, Clazz);
 
         for (var _len = arguments.length, injectedValues = Array(_len), _key = 0; _key < _len; _key++) {
           injectedValues[_key] = arguments[_key];
         }
 
-        _get(Object.getPrototypeOf(tempClass.prototype), 'constructor', this).apply(this, injectedValues);
+        _get(Object.getPrototypeOf(Clazz.prototype), 'constructor', this).apply(this, injectedValues);
         for (var i = 0; i < modules.length; i++) {
           this[modules[i]] = injectedValues[i];
         }
+        if (typeof this.init === 'function') {
+          this.init();
+        }
       }
 
-      return tempClass;
+      return Clazz;
     })(target);
 
-    tempClass.$inject = modules;
+    Clazz.$inject = modules;
 
-    return makeFunction(tempClass);
+    return makeFunction(Clazz);
   };
 }
 
