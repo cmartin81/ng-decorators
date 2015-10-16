@@ -1,20 +1,20 @@
-export function Factory(modules) {
+export function Factory(modules = []) {
   return createDecorator(modules, makeFactory);
 }
 
-export function Directive(modules) {
+export function Directive(modules = []) {
   return createDecorator(modules, makeDirective);
 }
 
-export function Provider(modules) {
+export function Provider(modules = []) {
   return createDecorator(modules, makeProvider);
 }
 
-export function Service(modules) {
+export function Service(modules = []) {
   return createDecorator(modules, makeService);
 }
 
-export function Controller(modules) {
+export function Controller(modules = []) {
   return createDecorator(modules, makeController);
 }
 
