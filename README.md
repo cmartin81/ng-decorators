@@ -12,7 +12,7 @@ Please read his article [Exploring ES6 Classes In AngularJS 1.x](http://www.mich
 ```javascript
 import {Factory, Directive, Provider, Service, Controller} from 'ng-decorators'
 
-@Factory(['$window'])  //or Directive or Provider or Service or Controller
+@Factory(['$window'])  //or Directive or Component or Provider or Service or Controller
 class FooBar{
   constructor(win){ //if you need to access the injected object it will be passed into the constructor
     console.log(win.location.host)
