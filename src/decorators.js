@@ -6,6 +6,10 @@ export function Directive(modules = []) {
   return createDecorator(modules, makeDirective);
 }
 
+export function Component(modules = []) {
+  return createDecorator(modules, makeComponent);
+}
+
 export function Provider(modules = []) {
   return createDecorator(modules, makeProvider);
 }
@@ -67,6 +71,10 @@ function makeDirective(constructorFn) {
 
   var factoryArray = _createFactoryArray(constructorFn);
   return factoryArray
+}
+
+function makeComponent(contructorFn) {
+  return contructorFn;
 }
 
 function makeController(contructorFn) {
